@@ -60,6 +60,10 @@ body{
     height: 100vh;
 }
 
+.services .card-body i{
+    font-size: 50px;
+}
+
 @media only screen and (max-width: 768px) and (max-width: 991px){
     .carousel-caption{
         bottom: 370px;
@@ -90,4 +94,14 @@ body{
         line-height: 1.6;
         font-size: 12px;
     }
+}
+.input-label {
+	text-align: right;
+	line-height: 1.2;
+}
+
+@media only screen and (max-width : 992px) {
+.input-label {
+	text-align: left;
+	}
 }
