@@ -1,6 +1,9 @@
 *{
     font-family: 'Belanosima', sans-serif;
 }
+p{
+    font-family: 'Kanit', sans-serif;
+}
 body{
     background: f1fbff;
 }
@@ -26,6 +29,10 @@ body{
     margin: auto;
     font-size: 18px;
     line-height: 1.9;
+}
+.inline-p {
+    display: inline;
+    margin-right: 10px;
 }
 .carousel-inner::before{
     content: '';
