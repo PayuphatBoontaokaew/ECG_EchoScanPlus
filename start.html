@@ -21,16 +21,37 @@
     <link rel="shortcut icon" type="x-icon" href="icon.png" >
 </head>
 <body>
-    <h1>ECG Monitoring</h1>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">ECG-EchoScanPlus<span class="text-success"> +</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about ">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+ </nav>
+    <div class="container">
+      <div class="row">
+        <div class="card text-center section-padding">
+          <h1>ECG-EchoScanPlus Monitoring</h1>
              <div>
                <canvas id="heartGraph"></canvas>
              </div>
-        
-             <div>
-               <h2>Heart Status :</h2>
-               <p id="heartStatus"></p>
-             </div>
-        
              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
              <script>
                var ecgData = []; // Array to store ECG measurements
@@ -104,5 +125,32 @@
                  processECGData(value);
                };
              </script>
+         </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="card text-center section-padding">
+          <div>
+            <h2>Heart Status :</h2>
+            <p id="heartStatus"></p>
+           </div>
+        </div>
+      </div>
+    </div>
+ <!-- Start footer -->
+      <div id="footer" class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+              <svg class="bi" width="30" height="24">
+                <use xlink:href="#bootstrap"></use>
+              </svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-muted">Copyright © 2023 ECG-EchoScanPlus +. All rights reserved.</span>
+          </div>
+        </footer>
+      </div>
+ <!-- End footer --> 
 </body>
 </html>
