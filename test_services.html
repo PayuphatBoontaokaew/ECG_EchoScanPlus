@@ -1,0 +1,83 @@
+<h1>ECG Monitoring</h1>
+             <div>
+               <canvas id="heartGraph"></canvas>
+             </div>
+        
+             <div>
+               <h2>Heart Status :</h2>
+               <p id="heartStatus"></p>
+             </div>
+        
+             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+             <script>
+               var ecgData = []; // Array to store ECG measurements
+        
+               // Create a line chart
+               var ctx = document.getElementById("heartGraph").getContext("2d");
+               var chart = new Chart(ctx, {
+                 type: "line",
+                 data: {
+                   labels: [], // Time labels for X-axis
+                   datasets: [{
+                     label: "ECG",
+                     data: ecgData,
+                     borderColor: "blue",
+                     fill: false
+                   }]
+                 },
+                 options: {
+                   responsive: true,
+                   scales: {
+                     x: {
+                       display: true,
+                       title: {
+                         display: true,
+                         text: "Time"
+                       }
+                     },
+                     y: {
+                       display: true,
+                       title: {
+                         display: true,
+                         text: "ECG Measurement"
+                       }
+                     }
+                   }
+                 }
+               });
+        
+               var heartStatus = document.getElementById("heartStatus");
+        
+               function processECGData(value) {
+                 // Add the new ECG measurements to the array
+                 ecgData.push(value);
+        
+                 // Update the chart data
+                 chart.data.labels.push(""); // Use an empty string for X-axis labels
+                 chart.update();
+        
+                 // Perform heart health analysis algorithm
+                 var isAbnormal = isECGAbnormal(value);
+        
+                 // Update heart status display
+                 heartStatus.textContent = isAbnormal ? "Abnormal" : "Normal";
+               }
+        
+               // Example heart health analysis algorithm
+               function isECGAbnormal(value) {
+                 // Replace with your own algorithm or use existing libraries
+                 // Example: If ECG value exceeds a certain threshold, consider it abnormal
+                 var threshold = 100;
+                 return value > threshold;
+               }
+        
+               // WebSocket connection to Arduino
+               var socket = new WebSocket("ws://localhost:8000"); // Replace with your Arduino WebSocket address
+        
+               socket.onmessage = function (event) {
+                 var value = parseInt(event.data);
+        
+                 // Process the received ECG value
+                 processECGData(value);
+               };
+             </script>
