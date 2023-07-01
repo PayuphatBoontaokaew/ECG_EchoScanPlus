@@ -9,7 +9,8 @@ int lastb = 0;
 int LastTime = 0;
 int status_sw = 0;
 int status_ecg = 0;
-int ecg1,ecg2,ecg3,ecg4,ecg5 ;
+int ecg1, ecg2, ecg3, ecg4, ecg5 ;
+float TotalEcg;
 #define sw 0
 #define shutdown_pin 10
 #define threshold 100 // to identify R peak
@@ -79,21 +80,18 @@ void loop() {
         timer = millis();
 
         count = 0;
+        status_ecg++;
 
       }
       //      calculate hrv from sensor
 
       hrv = hr / 60 - interval / 1000000;
 
-      Serial.print(hr);
-
-      Serial.print(",");
-
-      Serial.print(hrv);
-
-      Serial.print(",");
-
-      Serial.println(value);
+      //       Serial.print(hr);
+      //          Serial.print(",");
+      //           Serial.print(hrv);
+      //           Serial.print(",");
+      //      Serial.println(value);
       //clear Potgraph count
       if (a > 240)
       {
@@ -108,6 +106,45 @@ void loop() {
       lastb = b;
       lasta = a;
 
+      //collect values from sensors
+      if (status_ecg == 1) {
+        ecg1 = hr;
+        Serial.print("ecg1");
+        Serial.print(",");
+        Serial.println(ecg1);
+      }
+
+      else if (status_ecg == 2) {
+        ecg2 = hr;
+        Serial.print("ecg2");
+        Serial.print(",");
+        Serial.println(ecg2);
+      }
+
+      else if (status_ecg == 3) {
+        ecg3 = hr;
+        Serial.print("ecg3");
+        Serial.print(",");
+        Serial.println(ecg3);
+      }
+
+      else if (status_ecg == 4) {
+        ecg4 = hr;
+        Serial.print("ecg4");
+        Serial.print(",");
+        Serial.println(ecg4);
+      }
+
+      else if (status_ecg == 5) {
+        ecg5 = hr;
+        Serial.print("ecg5");
+        Serial.print(",");
+        Serial.println(ecg5);
+      }
+
+      else if (status_ecg == 6) {
+        TotalEcg = ecg1 + ecg2 + ecg3 + ecg4 + ecg5 / 5;
+      }
 
       delay(1);
       a++;
