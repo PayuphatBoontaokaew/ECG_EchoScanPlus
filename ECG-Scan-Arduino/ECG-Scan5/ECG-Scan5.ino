@@ -45,7 +45,7 @@ void loop() {
   analogWrite(B, 255);
   if (digitalRead(0) == 0) {
     display.fillScreen(TFT_BLACK);
-    analogWrite(B, 255);
+    analogWrite(B, 0);
     status_ecg = 0;
     status_sw = 1;
   }
