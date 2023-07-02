@@ -16,12 +16,18 @@ int TotalEcg;
 #define threshold 100 // to identify R peak
 #define timer_value 10000 // 10 seconds timer to calculate hr
 #define BUZZER 16
+#define R 3
+#define G 4
+#define B 5
 
 void setup() {
   EasyKids_Setup();
   Serial.begin(9600);
   pinMode(D2, INPUT); // Setup for leads off detection LO +
   pinMode(D1, INPUT); // Setup for leads off detection LO -
+  pinMode(R, OUTPUT);
+  pinMode(G, OUTPUT);
+  pinMode(B, OUTPUT);
   display.fillScreen(TFT_BLACK);
   display.setTextSize(6);
   welcomeSong();
@@ -36,8 +42,10 @@ void loop() {
   display.drawUTF8String(String("EchoScanPlus+"), 34, 90, GFXFF);
   display.setTextSize(1.9);
   display.drawUTF8String(String("Please press the button"), 10, 210, GFXFF);
+  digitalOut(B, 1);
   if (digitalRead(0) == 0) {
     display.fillScreen(TFT_BLACK);
+    digitalOut(B, 0);
     status_ecg = 0;
     status_sw = 1;
   }
@@ -186,9 +194,10 @@ void loop() {
         display.setCursor(10, 210);
         display.print(TotalEcg);
         display.print(" BPM");
-        //led red code here
         beep();
+        digitalOut(D3, 1);
         delay(4000);
+        digitalOut(D3, 0);
         display.fillScreen(TFT_BLACK);
         welcomeSong();
         status_sw = 0;
@@ -205,9 +214,10 @@ void loop() {
         display.setCursor(10, 210);
         display.print(TotalEcg);
         display.print(" BPM");
-        //led green code here
+        digitalOut(G, 4);
         beep();
         delay(4000);
+        digitalOut(G, 0);
         display.fillScreen(TFT_BLACK);
         welcomeSong();
         status_sw = 0;
@@ -225,8 +235,9 @@ void loop() {
         display.print(TotalEcg);
         display.print(" BPM");
         beep();
-        //led red code here
+        digitalOut(R, 1);
         delay(4000);
+        digitalOut(D3, 0);
         display.fillScreen(TFT_BLACK);
         welcomeSong();
         status_sw = 0;
