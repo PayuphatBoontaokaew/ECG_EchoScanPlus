@@ -42,10 +42,10 @@ void loop() {
   display.drawUTF8String(String("EchoScanPlus+"), 34, 90, GFXFF);
   display.setTextSize(1.9);
   display.drawUTF8String(String("Please press the button"), 10, 210, GFXFF);
-  digitalOut(B, 1);
+  analogWrite(B, 255);
   if (digitalRead(0) == 0) {
     display.fillScreen(TFT_BLACK);
-    digitalOut(B, 0);
+    analogWrite(B, 255);
     status_ecg = 0;
     status_sw = 1;
   }
@@ -195,9 +195,9 @@ void loop() {
         display.print(TotalEcg);
         display.print(" BPM");
         beep();
-        digitalOut(D3, 1);
+        analogWrite(R, 255);
         delay(4000);
-        digitalOut(D3, 0);
+        analogWrite(R, 0);
         display.fillScreen(TFT_BLACK);
         welcomeSong();
         status_sw = 0;
@@ -214,10 +214,10 @@ void loop() {
         display.setCursor(10, 210);
         display.print(TotalEcg);
         display.print(" BPM");
-        digitalOut(G, 4);
+        analogWrite(G, 255);
         beep();
         delay(4000);
-        digitalOut(G, 0);
+        analogWrite(G, 0);
         display.fillScreen(TFT_BLACK);
         welcomeSong();
         status_sw = 0;
@@ -235,9 +235,9 @@ void loop() {
         display.print(TotalEcg);
         display.print(" BPM");
         beep();
-        digitalOut(R, 1);
+        analogWrite(R, 255);
         delay(4000);
-        digitalOut(D3, 0);
+        analogWrite(R, 0);
         display.fillScreen(TFT_BLACK);
         welcomeSong();
         status_sw = 0;
