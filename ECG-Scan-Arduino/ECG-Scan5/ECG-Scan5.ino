@@ -16,9 +16,9 @@ int TotalEcg;
 #define threshold 100 // to identify R peak
 #define timer_value 10000 // 10 seconds timer to calculate hr
 #define BUZZER 16
-#define R 15
-#define G 27
-#define B 32
+#define R 15 //D3
+#define G 27 //D4
+#define B 32 //D5
 
 void setup() {
   EasyKids_Setup();
