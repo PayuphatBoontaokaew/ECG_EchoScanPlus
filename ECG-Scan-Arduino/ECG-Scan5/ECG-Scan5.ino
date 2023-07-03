@@ -42,10 +42,10 @@ void loop() {
   display.drawUTF8String(String("EchoScanPlus+"), 34, 90, GFXFF);
   display.setTextSize(1.9);
   display.drawUTF8String(String("Please press the button"), 10, 210, GFXFF);
-  analogWrite(B, 255);
+  analogWrite(R, 255);
   if (digitalRead(0) == 0) {
     display.fillScreen(TFT_BLACK);
-    analogWrite(B, 0);
+    analogWrite(R, 0);
     status_ecg = 0;
     status_sw = 1;
   }
