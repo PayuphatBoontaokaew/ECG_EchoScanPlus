@@ -208,7 +208,7 @@ void loop() {
         display.setUTF8Font(SarabunBold9EN, SarabunBold9TH , NULL);
         display.setTextColor(0xffff, 0x0);
         display.setTextSize(5);
-        display.setCursor(40, 100);
+        display.setCursor(15, 100);
         display.print("Normal");
         display.setTextSize(3.5);
         display.setCursor(10, 210);
